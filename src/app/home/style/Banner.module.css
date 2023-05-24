@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8%;
+
+}
+
+.container div {
+  width: 40%;
+  background-color: rgb( 245, 245, 245);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  box-shadow: 0 0px 9px black;
+}
+
+.container div h1 {
+  font-size: var(--big-font);
+  margin: 1%;
+}

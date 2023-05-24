@@ -1,0 +1,99 @@
+.table {
+  display: flex;
+  background-color: white;
+}
+
+.col {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  place-items: center;
+  justify-content: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.col .title {
+  width: 100%;
+  border-radius: 0;
+  font-size: var(--big-font);
+  padding: 2%;
+  box-shadow: 0 3px 9px black;
+  display: flex;
+  justify-content: center;
+}
+
+.col .board {
+  margin-top: 2%;
+  padding: 2%;
+  height: 42%;
+  width: 95%;
+  box-shadow: 0px 1px 3px black;
+}
+
+.col #bigBoard {
+  height: 94%;
+  width: 50%;
+}
+
+#bigBoard .list {
+  height: 90%;
+  background-color: var(--main-color);
+}
+
+.board .list {
+  display: flex;
+  background-color: var(--main-color);
+  flex-direction: column;
+  box-shadow: 0 0 3px black;
+  margin-top: 1%;
+  height: 80%;
+  gap: 5%;
+  overflow: auto;
+  padding: 2%;
+  width: 100%;
+}
+
+.board .total {
+  display: flex;
+  place-items: center;
+  justify-content: flex-end;
+  height: 15%;
+}
+
+.board .total span {
+  display: block;
+  padding: 0.5% 1%;
+}
+
+.row {
+  display: flex;
+  width: 94%;
+  gap: 2%   ;
+  height: 100%;
+}
+
+.row .board {
+  height: 100%;
+}
+
+.board .total .totalReceive {
+  background-color: var(--good);
+}
+
+.board .total .totalExpense {
+  background-color: var(--bad);
+}
+
+.receive {
+  color:  var(--good);
+}
+
+.expense {
+  color: var(--bad);
+}
+
+.active {
+  color: rgb(0, 21, 255)
+}
