@@ -10,7 +10,7 @@ export default function Home() {
     return (
       <>
         <Banner>
-          <h1>Simplified {user?.user.name}</h1>
+          <h1>Simplified Finaces</h1>
           <button className="confirm"><a href="/register">Join</a></button>
         </Banner>
         <Exemplo/>
