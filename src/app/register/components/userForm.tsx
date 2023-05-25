@@ -1,13 +1,15 @@
 "use client"
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import { IUser } from "@/app/types"
 import { isUserValid } from "../utils/validations"
+import { UserContext } from "@/app/hooks/useUser"
 
 import  style  from "../styles/form.module.css"
 
 export const UserForm = () => {
-  
+  const useUser = useContext(UserContext)
+
   const [userData, setuserData] = useState<IUser>({
     name:"",
     email: "",
@@ -36,22 +38,22 @@ export const UserForm = () => {
   }
 
   const userRegister = async (user:IUser) => {
-    if(!isUserValid(user)) return false
+    if(!isUserValid) return false
     try {
-      const fetchResponse = await fetch("/api/user/newUser", {
+      const searchUser:Response = await fetch("/api/user/newUser", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(user)
       });
-      const res = await fetchResponse.json();
-      console.log(res);
-      return res;
+      const { response } = await searchUser.json()
+      console.log(response);
+      if(response) useUser?.switchUser(userData)
+      
     } catch (e) {
         return e;
     }
-
 }
   return(
     <section className="container">

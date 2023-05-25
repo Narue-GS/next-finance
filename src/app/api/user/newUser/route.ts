@@ -1,14 +1,28 @@
-import { NextResponse } from 'next/server';
+// import { db } from '@vercel/postgres';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { IUser } from '@/app/types';
-import { isUserValid } from '@/app/register/utils/validations';
 
-export async function POST(req:any){
-	if(!isUserValid) throw new Error("invalid user")
-	try {
-    return new NextResponse(req.body, { status: 200, statusText: "Succes" });
-	} catch (e) {
-      console.log(e);
-			return new NextResponse(null, { status: 400, statusText: "Bad Request" });
-	}
+const defaultUsers:IUser[] = [
+  {
+    name: "Narue G. Santos",
+    email: "narue@gmail.com",
+    password: "3321",
+  }
+]
+
+export async function POST(
+  req: NextRequest,
+  res: NextResponse,
+) {
+  try {
+    const user = await req.json()
+    const alredyExist = defaultUsers.find(i => i.email == user.email)
+    if(alredyExist) return new Response(JSON.stringify({response:false}))
+    else return new Response(JSON.stringify({response:true}))
+    
+  } catch (error) {
+    return new NextResponse(null, { status: 400, statusText: "Bad Request" });
+  }
 }
+
